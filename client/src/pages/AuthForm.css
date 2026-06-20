@@ -1,0 +1,119 @@
+/* src/pages/AuthForm.css
+   Shared by SignUpPage and SignInPage. */
+
+.auth-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.auth-subtitle {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: 1.6;
+  margin: 0 0 var(--space-lg);
+}
+
+.oauth-btn {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--color-border-strong);
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  transition: background-color 0.15s ease;
+}
+
+.oauth-btn:hover {
+  background: var(--color-bg-secondary);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.auth-error {
+  font-size: 13px;
+  color: var(--color-danger);
+  background: var(--color-danger-light);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.auth-terms {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  text-align: center;
+  line-height: 1.6;
+  margin: var(--space-md) 0 0;
+}
+
+.auth-terms a {
+  color: var(--color-accent);
+}
+
+.auth-terms a:hover {
+  text-decoration: underline;
+}
+
+.auth-switch {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: var(--space-lg) 0 0;
+  padding-top: var(--space-lg);
+  border-top: 0.5px solid var(--color-border);
+}
+
+.auth-switch a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* Sign-in specific: password row with the "forgot password" link */
+
+.password-field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: -2px;
+}
+
+.forgot-link {
+  font-size: 12px;
+  color: var(--color-accent);
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.password-toggle {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.password-toggle:hover {
+  color: var(--color-text-secondary);
+}
