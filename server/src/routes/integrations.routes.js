@@ -7,7 +7,13 @@ import { asyncHandler } from "../middleware/errorHandler.js";
 import * as integrationsController from "../controllers/integrations.controller.js";
 
 const router = Router();
-router.use(requireAuth);
+
+// NOTE: We do NOT apply requireAuth to the whole router here, unlike
+// the other route files. The /callback route below is hit by the
+// browser navigating back from Google directly — it has no
+// Authorization header to check. Instead, we identify the user via
+// a signed `state` parameter (see connect() in the controller).
+// Every other route below still requires auth individually.
 
 /**
  * @swagger
@@ -34,10 +40,11 @@ router.use(requireAuth);
  *                 type: object
  *                 properties:
  *                   name: { type: string, example: "Google Calendar" }
+ *                   live: { type: boolean, description: "True if this provider has a real OAuth flow wired up. False means it's UI-only / coming soon." }
  *                   connected: { type: boolean }
  *                   lastSyncedAt: { type: string, format: date-time }
  */
-router.get("/", asyncHandler(integrationsController.listIntegrations));
+router.get("/", requireAuth, asyncHandler(integrationsController.listIntegrations));
 
 /**
  * @swagger
@@ -61,13 +68,18 @@ router.get("/", asyncHandler(integrationsController.listIntegrations));
  *               properties:
  *                 redirectUrl: { type: string }
  */
-router.post("/:provider/connect", asyncHandler(integrationsController.connect));
+router.post("/:provider/connect", requireAuth, asyncHandler(integrationsController.connect));
 
 /**
  * @swagger
  * /integrations/{provider}/callback:
  *   get:
  *     summary: OAuth callback — exchanges the auth code for an access token
+ *     description: >
+ *       Google redirects the user's browser here after they approve
+ *       access. This route is not meant to be called directly — it
+ *       exchanges the code for tokens, saves them, then redirects the
+ *       browser back to the Integrations page in the app.
  *     tags: [Integrations]
  *     parameters:
  *       - in: path
@@ -78,9 +90,13 @@ router.post("/:provider/connect", asyncHandler(integrationsController.connect));
  *         name: code
  *         required: true
  *         schema: { type: string }
+ *       - in: query
+ *         name: state
+ *         required: true
+ *         schema: { type: string, description: "Signed token identifying which user is connecting" }
  *     responses:
- *       200:
- *         description: Integration connected successfully
+ *       302:
+ *         description: Redirects back to the app's Integrations page
  */
 router.get("/:provider/callback", asyncHandler(integrationsController.callback));
 
@@ -100,6 +116,6 @@ router.get("/:provider/callback", asyncHandler(integrationsController.callback))
  *       204:
  *         description: Disconnected successfully
  */
-router.delete("/:provider", asyncHandler(integrationsController.disconnect));
+router.delete("/:provider", requireAuth, asyncHandler(integrationsController.disconnect));
 
 export default router;
