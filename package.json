@@ -1,0 +1,12 @@
+{
+  "name": "lifeos",
+  "private": true,
+  "version": "1.0.0",
+  "description": "LifeOS — an AI-powered goal execution platform. AWS Build On Hackathon, Track 4.",
+  "scripts": {
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "install:all": "cd client && npm install && cd ../server && npm install",
+    "setup:db": "cd server && node scripts/createTable.js"
+  }
+}
