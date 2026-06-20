@@ -1,0 +1,270 @@
+/* src/pages/DashboardPage.css */
+
+.dashboard-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: var(--space-xl);
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+  gap: var(--space-md);
+}
+
+.dashboard-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.dashboard-header p {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  margin: 4px 0 0;
+}
+
+.dashboard-loading,
+.dashboard-empty {
+  text-align: center;
+  padding: var(--space-section) var(--space-md);
+}
+
+.dashboard-loading {
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+}
+
+.dashboard-empty {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.dashboard-empty-icon {
+  font-size: 40px;
+  margin-bottom: var(--space-sm);
+}
+
+.dashboard-empty h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.dashboard-empty p {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 var(--space-md);
+}
+
+/* ── Metrics row ──────────────────────────────────────── */
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.metric-card {
+  background: var(--color-bg-secondary);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 110px;
+}
+
+.metric-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.metric-value {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.metric-danger {
+  color: var(--color-danger);
+}
+
+/* ── Goals grid ───────────────────────────────────────── */
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+/* ── Opportunities table ──────────────────────────────── */
+
+.opportunities-section {
+  background: #ffffff;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.opportunities-header {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-secondary);
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.opportunities-header h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.opportunities-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.opportunities-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-tertiary);
+  padding: 10px var(--space-lg);
+  background: var(--color-bg-secondary);
+}
+
+.opportunities-table td {
+  padding: 12px var(--space-lg);
+  font-size: 13px;
+  color: var(--color-text-primary);
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.opportunities-table tr:last-child td {
+  border-bottom: none;
+}
+
+.opportunities-table tr:hover td {
+  background: var(--color-bg-secondary);
+}
+
+.opp-name {
+  font-weight: 500;
+}
+
+.opp-goal {
+  color: var(--color-text-tertiary);
+}
+
+.opp-status-pill {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+}
+
+.status-tracking {
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+}
+
+.status-applied {
+  background: var(--color-purple-light);
+  color: var(--color-purple);
+}
+
+.status-rejected {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.status-won {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.opp-deadline-urgent {
+  color: var(--color-danger);
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+
+@media (max-width: 1023px) {
+  .goals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .dashboard-page {
+    flex-direction: column;
+  }
+
+  .dashboard-main {
+    padding: var(--space-md);
+    padding-bottom: 72px; /* room for fixed bottom nav */
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-header h1 {
+    font-size: 20px;
+  }
+
+  .metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .metric-card {
+    height: 88px;
+    padding: var(--space-md);
+  }
+
+  .metric-value {
+    font-size: 24px;
+  }
+
+  /* Opportunities table becomes a scrollable horizontal strip
+     rather than squeezing columns illegibly. */
+  .opportunities-section {
+    overflow-x: auto;
+  }
+
+  .opportunities-table {
+    min-width: 480px;
+  }
+}
