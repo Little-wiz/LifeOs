@@ -103,7 +103,7 @@ export default function ChatPage() {
         </section>
 
         <footer className="chat-input-footer">
-          <form className="chat-input-form" onSubmit={handleSend}>
+          <form className="chat-input-form" onSubmit={handleSend} data-tour="chat-input">
             <input
               type="text"
               value={input}
@@ -118,7 +118,7 @@ export default function ChatPage() {
         </footer>
       </main>
 
-      <aside className="chat-context-panel">
+      <aside className="chat-context-panel" data-tour="context-panel">
         <h2>Context</h2>
 
         {currentGoal && (

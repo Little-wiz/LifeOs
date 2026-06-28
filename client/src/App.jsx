@@ -6,6 +6,7 @@
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import ProductTour from "./components/tour/ProductTour";
 
 import LandingPage from "./pages/LandingPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -35,50 +36,64 @@ export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Routes>
-          {/* Public pages — anyone can see these */}
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
-          <Route path="/sign-in" element={<SignInPage />} />
-
-          {/* Logged-in only pages */}
-          <Route
-            path="/onboarding"
-            element={<ProtectedRoute><OnboardingPage /></ProtectedRoute>}
-          />
-          <Route
-            path="/chat"
-            element={<ProtectedRoute><ChatPage /></ProtectedRoute>}
-          />
-          <Route
-            path="/dashboard"
-            element={<ProtectedRoute><DashboardPage /></ProtectedRoute>}
-          />
-          <Route
-            path="/goals/:goalId"
-            element={<ProtectedRoute><GoalDetailPage /></ProtectedRoute>}
-          />
-          <Route
-            path="/opportunities"
-            element={<ProtectedRoute><OpportunitiesPage /></ProtectedRoute>}
-          />
-          <Route
-            path="/integrations"
-            element={<ProtectedRoute><IntegrationsPage /></ProtectedRoute>}
-          />
-          <Route
-            path="/digest"
-            element={<ProtectedRoute><WeeklyDigestPage /></ProtectedRoute>}
-          />
-          <Route
-            path="/settings"
-            element={<ProtectedRoute><SettingsPage /></ProtectedRoute>}
-          />
-
-          {/* Anything else shows a friendly 404 */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <AppRoutes />
       </BrowserRouter>
     </AuthProvider>
+  );
+}
+
+// Split out from App so we can call useAuth() here — useAuth needs to
+// be inside AuthProvider, and this also lets the tour mount only when
+// someone is actually logged in.
+function AppRoutes() {
+  const { user } = useAuth();
+
+  return (
+    <>
+      {/* {user && <ProductTour />} */}
+      <Routes>
+        {/* Public pages — anyone can see these */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
+
+        {/* Logged-in only pages */}
+        <Route
+          path="/onboarding"
+          element={<ProtectedRoute><OnboardingPage /></ProtectedRoute>}
+        />
+        <Route
+          path="/chat"
+          element={<ProtectedRoute><ChatPage /></ProtectedRoute>}
+        />
+        <Route
+          path="/dashboard"
+          element={<ProtectedRoute><DashboardPage /></ProtectedRoute>}
+        />
+        <Route
+          path="/goals/:goalId"
+          element={<ProtectedRoute><GoalDetailPage /></ProtectedRoute>}
+        />
+        <Route
+          path="/opportunities"
+          element={<ProtectedRoute><OpportunitiesPage /></ProtectedRoute>}
+        />
+        <Route
+          path="/integrations"
+          element={<ProtectedRoute><IntegrationsPage /></ProtectedRoute>}
+        />
+        <Route
+          path="/digest"
+          element={<ProtectedRoute><WeeklyDigestPage /></ProtectedRoute>}
+        />
+        <Route
+          path="/settings"
+          element={<ProtectedRoute><SettingsPage /></ProtectedRoute>}
+        />
+
+        {/* Anything else shows a friendly 404 */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }

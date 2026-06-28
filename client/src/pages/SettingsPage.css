@@ -1,0 +1,139 @@
+/* src/pages/SettingsPage.css */
+
+.settings-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.settings-main {
+  flex: 1;
+  padding: var(--space-xl);
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.settings-header {
+  margin-bottom: var(--space-xl);
+}
+
+.settings-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.settings-header p {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  margin: 4px 0 0;
+}
+
+.settings-card {
+  background: var(--color-bg-secondary);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.settings-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.settings-card-head h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.settings-card-summary {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-md);
+}
+
+/* ── Account row ──────────────────────────────────────── */
+
+.account-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.account-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.account-info {
+  flex: 1;
+}
+
+.account-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.account-email {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  margin: 2px 0 0;
+}
+
+.plan-pill {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  white-space: nowrap;
+}
+
+/* ── Danger / session card ────────────────────────────── */
+
+.settings-card-danger {
+  border-color: var(--color-border);
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  .settings-page {
+    flex-direction: column;
+  }
+
+  .settings-main {
+    padding: var(--space-md);
+    padding-bottom: 72px;
+  }
+
+  .settings-header h1 {
+    font-size: 20px;
+  }
+
+  .account-row {
+    flex-wrap: wrap;
+  }
+}

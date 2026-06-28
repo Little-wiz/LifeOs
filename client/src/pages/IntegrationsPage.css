@@ -1,0 +1,224 @@
+/* src/pages/IntegrationsPage.css */
+
+.integrations-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.integrations-main {
+  flex: 1;
+  padding: var(--space-xl);
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.integrations-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  gap: var(--space-md);
+}
+
+.integrations-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.integrations-header p {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  margin: 4px 0 0;
+}
+
+/* ── Banner ───────────────────────────────────────────── */
+
+.integrations-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+}
+
+.banner-success {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+  border: 0.5px solid var(--color-success);
+}
+
+.banner-error {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+  border: 0.5px solid var(--color-danger);
+}
+
+.banner-dismiss {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  color: inherit;
+  opacity: 0.6;
+  padding: 0;
+}
+
+.banner-dismiss:hover {
+  opacity: 1;
+}
+
+/* ── Loading / error ──────────────────────────────────── */
+
+.integrations-loading {
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+  padding: var(--space-section) var(--space-md);
+}
+
+.integrations-error {
+  text-align: center;
+  padding: var(--space-section) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--color-text-secondary);
+}
+
+.integrations-error button {
+  background: transparent;
+  border: none;
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ── Integration cards grid ───────────────────────────── */
+
+.integrations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.integration-card {
+  background: var(--color-bg-secondary);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s ease;
+}
+
+.integration-card-connected {
+  background: var(--color-bg-primary);
+  border-color: var(--color-success);
+}
+
+.integration-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.integration-icon {
+  font-size: 28px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-primary);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.status-pill {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.pill-connected {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.pill-disconnected {
+  background: var(--color-bg-primary);
+  color: var(--color-text-tertiary);
+  border: 0.5px solid var(--color-border-strong);
+}
+
+.pill-soon {
+  background: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.integration-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 6px;
+}
+
+.integration-description {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0 0 var(--space-md);
+  flex: 1;
+}
+
+.integration-synced {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin: 0 0 var(--space-md);
+}
+
+.integration-card-action {
+  margin-top: auto;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+
+@media (max-width: 1023px) {
+  .integrations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .integrations-page {
+    flex-direction: column;
+  }
+
+  .integrations-main {
+    padding: var(--space-md);
+    padding-bottom: 72px; /* room for fixed bottom nav */
+  }
+
+  .integrations-header h1 {
+    font-size: 20px;
+  }
+
+  .integrations-grid {
+    grid-template-columns: 1fr;
+  }
+}

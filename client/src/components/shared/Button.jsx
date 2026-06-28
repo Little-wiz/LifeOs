@@ -17,6 +17,7 @@ export default function Button({
   onClick,
   type = "button",
   disabled = false,
+  ...rest
 }) {
   return (
     <button
@@ -24,6 +25,7 @@ export default function Button({
       className={`btn btn-${variant} btn-${size} ${fullWidth ? "btn-full" : ""}`}
       onClick={onClick}
       disabled={disabled}
+      {...rest}
     >
       {icon && iconPosition === "left" && <span className="btn-icon">{icon}</span>}
       {children}

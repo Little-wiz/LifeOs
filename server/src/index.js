@@ -46,3 +46,9 @@ app.listen(env.port, () => {
   console.log(`🚀 LifeOS API running on http://localhost:${env.port}`);
   console.log(`📚 API docs available at http://localhost:${env.port}/api-docs`);
 });
+
+// Vercel's Express support (as of 2026) works with either this
+// app.listen() pattern above OR a default export — exporting here
+// too costs nothing locally and removes any ambiguity in how Vercel
+// detects and wraps this app as a single Vercel Function.
+export default app;

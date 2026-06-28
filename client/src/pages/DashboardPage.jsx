@@ -79,7 +79,7 @@ export default function DashboardPage() {
               {today} · {activeGoalsCount} active goal{activeGoalsCount !== 1 ? "s" : ""}
             </p>
           </div>
-          <Button variant="ghost" icon="+" onClick={() => navigate("/chat")}>
+          <Button variant="ghost" icon="+" onClick={() => navigate("/chat")} data-tour="new-goal-btn">
             New goal
           </Button>
         </header>
@@ -90,7 +90,7 @@ export default function DashboardPage() {
           <EmptyDashboard onCreateGoal={() => navigate("/chat")} />
         ) : (
           <>
-            <section className="metrics-row">
+            <section className="metrics-row" data-tour="metrics">
               <MetricCard label="Active goals" value={activeGoalsCount} />
               <MetricCard label="Milestones done" value={totalMilestonesDone} />
               <MetricCard label="Opportunities tracked" value={opportunities.length} />
@@ -101,14 +101,14 @@ export default function DashboardPage() {
               />
             </section>
 
-            <section className="goals-grid">
+            <section className="goals-grid" data-tour="goals-grid">
               {goals.map((goal) => (
                 <GoalCard key={goal.goalId} goal={goal} />
               ))}
             </section>
 
             {opportunities.length > 0 && (
-              <section className="opportunities-section">
+              <section className="opportunities-section" data-tour="opportunities">
                 <div className="opportunities-header">
                   <h3>Opportunities tracked</h3>
                 </div>

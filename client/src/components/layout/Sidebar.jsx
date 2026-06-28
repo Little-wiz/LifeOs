@@ -22,15 +22,15 @@ export default function Sidebar({ goals = [] }) {
       </div>
 
       <nav className="sidebar-nav">
-        <NavLink to="/chat" className="sidebar-nav-item">
+        <NavLink to="/chat" className="sidebar-nav-item" data-tour="nav-chat">
           <span aria-hidden="true">💬</span>
           <span>Chat</span>
         </NavLink>
-        <NavLink to="/dashboard" className="sidebar-nav-item">
+        <NavLink to="/dashboard" className="sidebar-nav-item" data-tour="nav-dashboard">
           <span aria-hidden="true">📊</span>
           <span>Dashboard</span>
         </NavLink>
-        <NavLink to="/integrations" className="sidebar-nav-item">
+        <NavLink to="/integrations" className="sidebar-nav-item" data-tour="nav-integrations">
           <span aria-hidden="true">🔌</span>
           <span>Integrations</span>
         </NavLink>
